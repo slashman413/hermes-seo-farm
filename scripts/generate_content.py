@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-hermes-seo-farm: Auto-generate SEO-optimized English content for GitHub Pages.
-Each run generates 3–5 articles across different niches.
+hermes-seo-farm: Auto-generate SEO-optimized English HTML content for GitHub Pages.
+Each run generates 3–5 articles across different niches as static .html files.
 """
 import os, sys, json, random
 from pathlib import Path
@@ -36,9 +36,9 @@ CONTENT_TEMPLATES = {
                 "## Two Investment Approaches",
                 "Dollar-cost averaging (DCA) and lump sum investing each have pros and cons depending on your situation.",
                 "## DCA Advantages",
-                "✓ Spreads out purchase price risk\\n✓ Perfect for monthly salary earners\\n✓ Lower psychological stress",
+                "✓ Spreads out purchase price risk\n✓ Perfect for monthly salary earners\n✓ Lower psychological stress",
                 "## Lump Sum Advantages",
-                "✓ Better capital efficiency\\n✓ Higher long-term returns on average\\n✓ Best when you have a cash windfall",
+                "✓ Better capital efficiency\n✓ Higher long-term returns on average\n✓ Best when you have a cash windfall",
                 "## Practical Advice",
                 "If you have steady income, use DCA monthly. If you have a bonus or inheritance, consider phased lump sum investing.",
             ],
@@ -86,9 +86,9 @@ CONTENT_TEMPLATES = {
                 "## What Is the Pomodoro Technique?",
                 "Work for 25 minutes, rest for 5. Take a 15-30 minute break every 4 pomodoros.",
                 "## Why It Works",
-                "1. Short sprints lower psychological resistance to starting\\n2. Forced breaks prevent burnout\\n3. Quantifiable work units boost satisfaction",
+                "1. Short sprints lower psychological resistance to starting\n2. Forced breaks prevent burnout\n3. Quantifiable work units boost satisfaction",
                 "## Pro Tips",
-                "• One task per pomodoro\\n• Never interrupt a pomodoro\\n• Track your daily pomodoro count\\n• Adjust intervals to your rhythm",
+                "• One task per pomodoro\n• Never interrupt a pomodoro\n• Track your daily pomodoro count\n• Adjust intervals to your rhythm",
             ],
         },
         {
@@ -98,9 +98,9 @@ CONTENT_TEMPLATES = {
                 "## What Is a Second Brain?",
                 "A system for capturing, organizing, and retrieving ideas so you never lose a good thought again.",
                 "## The PARA Method",
-                "Organize everything into 4 folders:\\n• Projects: Active outcomes\\n• Areas: Ongoing responsibilities\\n• Resources: Topics of interest\\n• Archives: Inactive items",
+                "Organize everything into 4 folders:\n• Projects: Active outcomes\n• Areas: Ongoing responsibilities\n• Resources: Topics of interest\n• Archives: Inactive items",
                 "## Tools to Use",
-                "• Capture: Apple Notes / Google Keep\\n• Organize: Notion / Obsidian\\n• Retrieve: Built-in search + tags\\n• Archive:定期清理",
+                "• Capture: Apple Notes / Google Keep\n• Organize: Notion / Obsidian\n• Retrieve: Built-in search + tags\n• Archive: Regular cleanup",
                 "## Start Today",
                 "Even 5 minutes of note-taking daily compounds into a powerful knowledge base over months.",
             ],
@@ -114,7 +114,7 @@ CONTENT_TEMPLATES = {
                 "## What Is GitHub Actions?",
                 "GitHub's built-in CI/CD service for automating software workflows — completely free for public repos.",
                 "## Core Concepts",
-                "• Workflow: Automated process definition\\n• Job: Collection of steps\\n• Step: Single operation\\n• Action: Reusable module",
+                "• Workflow: Automated process definition\n• Job: Collection of steps\n• Step: Single operation\n• Action: Reusable module",
                 "## Practical Examples",
                 "### 1. Auto-Deploy GitHub Pages",
                 "Build your static site automatically on every push to main.",
@@ -131,9 +131,9 @@ CONTENT_TEMPLATES = {
                 "## Why GitHub Pages?",
                 "Completely free, supports custom domains, works with Google Analytics.",
                 "## Setup Steps",
-                "1. Create repo: username.github.io\\n2. Push index.html\\n3. Set custom domain\\n4. Configure DNS CNAME record",
+                "1. Create repo: username.github.io\n2. Push index.html\n3. Set custom domain\n4. Configure DNS CNAME record",
                 "## What You Can Build",
-                "• Personal blog\\n• Portfolio\\n• Tool site (calculators, converters)\\n• Business landing page",
+                "• Personal blog\n• Portfolio\n• Tool site (calculators, converters)\n• Business landing page",
             ],
         },
         {
@@ -143,11 +143,16 @@ CONTENT_TEMPLATES = {
                 "## Why Automate with Python?",
                 "Python is the easiest language to automate repetitive tasks. Plus it runs everywhere.",
                 "## 5 Things You Can Automate Today",
-                "### 1. File Organization\\nAuto-sort your Downloads folder by file type.",
-                "### 2. Email Reports\\nSchedule daily email digests with Python + SMTP.",
-                "### 3. Web Scraping\\nTrack prices, news, or data changes automatically.",
-                "### 4. Social Media Posts\\nSchedule tweets and posts with Python scripts.",
-                "### 5. Data Backup\\nAuto-backup important folders to cloud storage."
+                "### 1. File Organization",
+                "Auto-sort your Downloads folder by file type.",
+                "### 2. Email Reports",
+                "Schedule daily email digests with Python + SMTP.",
+                "### 3. Web Scraping",
+                "Track prices, news, or data changes automatically.",
+                "### 4. Social Media Posts",
+                "Schedule tweets and posts with Python scripts.",
+                "### 5. Data Backup",
+                "Auto-backup important folders to cloud storage.",
             ],
         },
     ],
@@ -161,7 +166,7 @@ CONTENT_TEMPLATES = {
                 "## Why Habits Stick (or Don't)",
                 "The habit loop: Cue → Craving → Response → Reward. Most people fail because they focus on the outcome, not the system.",
                 "## Atomic Habits in Practice",
-                "• Make it obvious (cue)\\n• Make it attractive (craving)\\n• Make it easy (response)\\n• Make it satisfying (reward)",
+                "• Make it obvious (cue)\n• Make it attractive (craving)\n• Make it easy (response)\n• Make it satisfying (reward)",
                 "## Start Your 1% Today",
                 "Pick one tiny habit. Do it for 2 minutes. Repeat tomorrow. That's all it takes.",
             ],
@@ -175,7 +180,7 @@ CONTENT_TEMPLATES = {
                 "## The Dichotomy of Control",
                 "Some things are up to you (thoughts, actions, opinions). Others are not (weather, others' opinions, the past). Focus only on the first.",
                 "## Daily Stoic Practices",
-                "• Morning: Prepare for challenges\\n• Throughout the day: Pause before reacting\\n• Evening: Review your actions",
+                "• Morning: Prepare for challenges\n• Throughout the day: Pause before reacting\n• Evening: Review your actions",
                 "## Modern Applications",
                 "Stoicism helps with: anxiety reduction, better decision-making, emotional resilience, and focusing on what truly matters.",
             ],
@@ -207,46 +212,132 @@ CONTENT_TEMPLATES = {
                 "## Does AI Content Rank on Google?",
                 "Yes — Google rewards quality, regardless of who (or what) writes it.",
                 "## The Right Way to Use AI for SEO",
-                "• Use AI for research and outlines\\n• Add your unique experience and data\\n• Fact-check everything\\n• Optimize for humans first, search engines second",
+                "• Use AI for research and outlines\n• Add your unique experience and data\n• Fact-check everything\n• Optimize for humans first, search engines second",
                 "## Structure That Works",
-                "1. Hook in the first 100 words\\n2. Clear H2/H3 subheadings\\n3. Bullet points for scannability\\n4. Internal/External links\\n5. Strong conclusion with CTA",
+                "1. Hook in the first 100 words\n2. Clear H2/H3 subheadings\n3. Bullet points for scannability\n4. Internal/External links\n5. Strong conclusion with CTA",
                 "## Tools for SEO Content",
-                "• Generate outlines: Claude\\n• Write drafts: ChatGPT/Claude\\n• Optimize: Surfer SEO\\n• Analyze: Google Search Console",
+                "• Generate outlines: Claude\n• Write drafts: ChatGPT/Claude\n• Optimize: Surfer SEO\n• Analyze: Google Search Console",
             ],
         },
     ],
 }
 
 
-def generate_post(template: dict) -> str:
-    """Generate a markdown post from a template."""
-    today = datetime.now()
-    date_str = today.strftime("%Y-%m-%d")
+def md_to_html(text: str) -> str:
+    """Convert simple markdown to HTML for inline rendering."""
+    lines = text.split("\n")
+    html_parts = []
+    in_list = False
+    list_type = None  # 'ul' or 'ol'
+    in_nested_section = False
+    for line in lines:
+        stripped = line.strip()
+        # Empty line
+        if not stripped:
+            if in_list:
+                html_parts.append(f"</{list_type}>")
+                in_list = False
+                list_type = None
+            html_parts.append("<br>")
+            continue
+        # Headings
+        if stripped.startswith("### "):
+            if in_list:
+                html_parts.append(f"</{list_type}>")
+                in_list = False; list_type = None
+            html_parts.append(f"<h3>{stripped[4:]}</h3>")
+        elif stripped.startswith("## "):
+            if in_list:
+                html_parts.append(f"</{list_type}>")
+                in_list = False; list_type = None
+            html_parts.append(f"<h2>{stripped[3:]}</h2>")
+        # Bullet list
+        elif stripped.startswith("• ") or stripped.startswith("- ") or stripped.startswith("* "):
+            txt = stripped.lstrip("•-* ")
+            if not in_list or list_type != "ul":
+                if in_list: html_parts.append(f"</{list_type}>")
+                html_parts.append("<ul>")
+                in_list = True; list_type = "ul"
+            html_parts.append(f"<li>{txt}</li>")
+        # Numbered list
+        elif len(stripped) > 2 and stripped[0].isdigit() and stripped[1:3] in (". ", ") "):
+            txt = stripped.split(". ", 1)[1] if ". " in stripped else stripped.split(") ", 1)[1]
+            if not in_list or list_type != "ol":
+                if in_list: html_parts.append(f"</{list_type}>")
+                html_parts.append("<ol>")
+                in_list = True; list_type = "ol"
+            html_parts.append(f"<li>{txt}</li>")
+        else:
+            if in_list:
+                html_parts.append(f"</{list_type}>")
+                in_list = False; list_type = None
+            html_parts.append(f"<p>{stripped}</p>")
+    if in_list:
+        html_parts.append(f"</{list_type}>")
+    return "\n".join(html_parts)
+
+
+def generate_post_html(template: dict, date_str: str) -> tuple[str, str]:
+    """Generate a full HTML post and return (html_content, slug)."""
     slug = template["title"].lower().replace(" ", "-").replace(":", "").replace("?", "")
-    slug = "".join(c for c in slug if c.isalnum() or c in "-_")
+    slug = "".join(c for c in slug if c.isalnum() or c in "-_")[:60]
 
-    tags_str = " ".join(f"[{t}]" for t in template["tags"])
+    tags_html = " ".join(f'<span class="tag">{t}</span>' for t in template["tags"])
+    body_html = md_to_html("\n".join(template["body"]))
+    description = template["body"][1] if len(template["body"]) > 1 else ""
 
-    lines = [
-        "---",
-        f"layout: post",
-        f"title: \"{template['title']}\"",
-        f"date: {date_str}",
-        f"tags: {tags_str}",
-        f"description: \"{template['body'][1] if len(template['body']) > 1 else ''}\"",
-        "---",
-        "",
-    ]
-    lines.extend(template["body"])
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{template['title']}</title>
+<meta name="description" content="{description}">
+<style>
+    * {{ margin:0; padding:0; box-sizing:border-box; }}
+    body {{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0f172a; color:#e2e8f0; max-width:720px; margin:auto; padding:20px; line-height:1.8; font-size:16px; }}
+    h1 {{ margin:30px 0 10px; font-size:1.8rem; line-height:1.3; }}
+    h2 {{ color:#60a5fa; margin:25px 0 10px; font-size:1.3rem; border-bottom:1px solid #1e293b; padding-bottom:5px; }}
+    h3 {{ color:#93c5fd; margin:20px 0 8px; font-size:1.1rem; }}
+    p {{ margin:12px 0; }}
+    ul, ol {{ margin:10px 0 10px 24px; }}
+    li {{ margin:5px 0; }}
+    .tags {{ margin:10px 0 20px; }}
+    .tag {{ display:inline-block; background:#1e293b; color:#38bdf8; padding:2px 10px; border-radius:12px; font-size:0.8rem; margin-right:5px; }}
+    .date {{ color:#64748b; font-size:0.85rem; margin-bottom:20px; }}
+    .ad {{ background:#1e293b; border:2px dashed #334155; border-radius:12px; padding:30px; text-align:center; margin:30px 0; color:#475569; }}
+    a {{ color:#3b82f6; }}
+    a:hover {{ color:#60a5fa; }}
+    .back {{ display:inline-block; margin:20px 0; color:#64748b; text-decoration:none; font-size:0.9rem; }}
+    .back:hover {{ color:#3b82f6; }}
+    footer {{ text-align:center; color:#475569; padding:30px 0; font-size:0.85rem; }}
+</style>
+</head>
+<body>
+    <a href="../index.html" class="back">&larr; Back to Blog</a>
+    <h1>{template['title']}</h1>
+    <div class="date">{date_str}</div>
+    <div class="tags">{tags_html}</div>
+    <div class="ad">📢 AdSense Ad Unit (enable after approval)</div>
+{body_html}
+    <div class="ad">📢 AdSense Ad Unit (enable after approval)</div>
+    <footer>
+        <p>Auto-generated daily by hermes-seo-farm</p>
+        <p><a href="https://github.com/slashman413/hermes-seo-farm">GitHub</a></p>
+    </footer>
+</body>
+</html>"""
+    return html, slug
 
-    return "\n".join(lines)
 
-
-def generate_posts(count: int = 5) -> list[str]:
-    """Generate a set of SEO-optimized posts across categories."""
+def generate_posts(count: int = 5) -> list[tuple[str, str, str]]:
+    """Generate a set of SEO-optimized posts across categories.
+    Returns list of (html_content, slug, title).
+    """
     posts = []
     categories = list(CONTENT_TEMPLATES.keys())
     random.shuffle(categories)
+    today = datetime.now().strftime("%Y-%m-%d")
 
     # Pick at least 1 from each category, up to count
     for category in categories:
@@ -254,34 +345,34 @@ def generate_posts(count: int = 5) -> list[str]:
         selected = random.sample(templates, min(1, len(templates)))
         for t in selected:
             if len(posts) < count:
-                posts.append(generate_post(t))
+                html_content, slug = generate_post_html(t, today)
+                posts.append((html_content, slug, t["title"]))
 
     return posts
 
 
-def build_site(posts: list[str]):
-    """Build the GitHub Pages site structure."""
+def build_site(posts: list[tuple[str, str, str]]):
+    """Build the GitHub Pages site as static HTML files."""
     docs_dir = BASE_DIR / "docs"
     docs_dir.mkdir(parents=True, exist_ok=True)
     posts_dir = docs_dir / "_posts"
     posts_dir.mkdir(parents=True, exist_ok=True)
 
-    # Write each post
-    for i, post in enumerate(posts):
-        title_line = [l for l in post.split("\n") if l.startswith("title:")]
-        title = title_line[0].replace("title: ", "").strip('"') if title_line else f"post-{i}"
-        slug = title.lower().replace(" ", "-").replace(":", "").replace("?", "")
-        slug = "".join(c for c in slug if c.isalnum() or c in "-_")[:60]
-
-        filename = f"{datetime.now().strftime('%Y-%m-%d')}-{slug}.md"
-        (posts_dir / filename).write_text(post, encoding="utf-8")
+    # Write each post as .html
+    for html, slug, title in posts:
+        filename = f"{datetime.now().strftime('%Y-%m-%d')}-{slug}.html"
+        (posts_dir / filename).write_text(html, encoding="utf-8")
         print(f"  ✅ {filename}")
 
-    # Write index.html
+    # Build index.html
     post_links = ""
-    for f in sorted(posts_dir.glob("*.md"), reverse=True):
-        t = f.read_text().split("\n")[2].replace("title: ", "").strip('"')
-        post_links += f'<li><a href="_posts/{f.name.replace(".md", ".html")}">{t}</a></li>\n'
+    for f in sorted(posts_dir.glob("*.html"), reverse=True):
+        # Extract title from HTML
+        content = f.read_text(encoding="utf-8")
+        title_start = content.find("<title>")
+        title_end = content.find("</title>")
+        t = content[title_start + 7:title_end] if title_start >= 0 else f.name
+        post_links += f'<li><a href="_posts/{f.name}">{t}</a> <span class="date">{f.name[:10]}</span></li>\n'
 
     index_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -290,20 +381,21 @@ def build_site(posts: list[str]):
 <meta name="description" content="Free articles on Taiwan stock investing, productivity tools, tech tutorials, psychology, and AI.">
 <style>
     * {{ margin:0; padding:0; box-sizing:border-box; }}
-    body {{ font-family:-apple-system,sans-serif; background:#0f172a; color:#e2e8f0; max-width:800px; margin:auto; padding:20px; }}
+    body {{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0f172a; color:#e2e8f0; max-width:800px; margin:auto; padding:20px; }}
     h1 {{ text-align:center; margin:20px 0; font-size:2rem; }}
-    .post-list {{ list-style:none; }}
-    .post-list li {{ background:#1e293b; margin:10px 0; padding:15px 20px; border-radius:12px; }}
+    .subtitle {{ text-align:center; color:#64748b; margin-bottom:20px; }}
+    .post-list {{ list-style:none; padding:0; }}
+    .post-list li {{ background:#1e293b; margin:10px 0; padding:15px 20px; border-radius:12px; display:flex; justify-content:space-between; align-items:center; }}
     .post-list a {{ color:#3b82f6; text-decoration:none; font-size:1.1rem; }}
     .post-list a:hover {{ color:#60a5fa; }}
-    .post-list .date {{ color:#64748b; font-size:0.85rem; }}
+    .post-list .date {{ color:#64748b; font-size:0.85rem; white-space:nowrap; }}
     .ad {{ background:#1e293b; border:2px dashed #334155; border-radius:12px; padding:30px; text-align:center; margin:20px 0; color:#475569; }}
     footer {{ text-align:center; color:#475569; padding:20px; }}
 </style>
 </head>
 <body>
     <h1>📝 Knowledge Blog</h1>
-    <p style="text-align:center;color:#64748b;">Taiwan Stocks · Productivity · Tech · Psychology · AI</p>
+    <p class="subtitle">Taiwan Stocks · Productivity · Tech · Psychology · AI</p>
     <div class="ad">📢 AdSense Ad Unit (enable after approval)</div>
     <h2>Latest Articles</h2>
     <ul class="post-list">{post_links}</ul>
@@ -322,7 +414,7 @@ def main():
     print(f"📝 Generating SEO content for {datetime.now().strftime('%Y-%m-%d')}")
     posts = generate_posts(count=5)
     build_site(posts)
-    print(f"✅ Done: {len(posts)} posts created")
+    print(f"✅ Done: {len(posts)} HTML posts created")
 
 
 if __name__ == "__main__":
