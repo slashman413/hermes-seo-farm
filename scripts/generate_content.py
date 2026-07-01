@@ -625,15 +625,17 @@ def build_site(posts: list[tuple[str, str, str]]):
         (posts_dir / filename).write_text(html, encoding="utf-8")
         print(f"  ✅ {filename}")
 
-    # Keep only the 20 most recent posts
+    # If over 20 posts, delete the single oldest one
     all_posts = sorted(posts_dir.glob("*.html"), reverse=True)
-    for old_post in all_posts[20:]:
-        old_post.unlink()
-        print(f"  🗑️ Removed old post: {old_post.name}")
+    if len(all_posts) > 20:
+        oldest = all_posts[-1]
+        oldest.unlink()
+        print(f"  🗑️ Removed oldest: {oldest.name}")
+        all_posts = all_posts[:-1]  # rebuild list without it
 
     # Build index with post links and site description
     post_links = ""
-    for f in all_posts[:20] if len(all_posts) > 20 else all_posts:
+    for f in all_posts:
         content = f.read_text(encoding="utf-8")
         t = ""
         ts = content.find("<title>")
