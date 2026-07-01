@@ -692,7 +692,7 @@ def build_site(posts: list[tuple[str, str, str]]):
 
 def main():
     print(f"📝 Generating SEO content for {datetime.now().strftime('%Y-%m-%d')}")
-    posts = generate_posts(count=1)
+    posts = generate_posts(count=3)
     build_site(posts)
     print(f"✅ Done: {len(posts)} articles with product CTAs")
 
