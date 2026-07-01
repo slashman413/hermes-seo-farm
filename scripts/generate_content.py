@@ -625,9 +625,15 @@ def build_site(posts: list[tuple[str, str, str]]):
         (posts_dir / filename).write_text(html, encoding="utf-8")
         print(f"  ✅ {filename}")
 
+    # Keep only the 20 most recent posts
+    all_posts = sorted(posts_dir.glob("*.html"), reverse=True)
+    for old_post in all_posts[20:]:
+        old_post.unlink()
+        print(f"  🗑️ Removed old post: {old_post.name}")
+
     # Build index with post links and site description
     post_links = ""
-    for f in sorted(posts_dir.glob("*.html"), reverse=True):
+    for f in all_posts[:20] if len(all_posts) > 20 else all_posts:
         content = f.read_text(encoding="utf-8")
         t = ""
         ts = content.find("<title>")
@@ -684,7 +690,7 @@ def build_site(posts: list[tuple[str, str, str]]):
 
 def main():
     print(f"📝 Generating SEO content for {datetime.now().strftime('%Y-%m-%d')}")
-    posts = generate_posts(count=5)
+    posts = generate_posts(count=1)
     build_site(posts)
     print(f"✅ Done: {len(posts)} articles with product CTAs")
 
