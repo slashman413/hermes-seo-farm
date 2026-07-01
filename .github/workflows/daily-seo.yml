@@ -26,14 +26,7 @@ jobs:
       - name: Generate SEO content
         run: python scripts/generate_content.py
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages
-
-      - name: Commit changes
+      - name: Commit changes to main
         run: |
           git config user.name "hermes-agent"
           git config user.email "hermes@nousresearch.com"
@@ -42,3 +35,11 @@ jobs:
             git commit -m "auto: daily SEO content update $(date +%Y-%m-%d)"
             git push
           }
+
+      - name: Deploy docs to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          keep_files: false
