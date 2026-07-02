@@ -13,6 +13,10 @@ permissions:
 env:
   PYTHON_VERSION: "3.11"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -43,3 +47,14 @@ jobs:
           publish_dir: ./docs
           publish_branch: gh-pages
           keep_files: false
+
+  notify-failure:
+    needs: [generate]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord failure alert
+        run: >-
+          curl -sf -H "Content-Type: application/json"
+          -d '{"content": "\ud83d\udd34 ${{ github.repository }} \u2014 ${{ github.workflow }} \u6392\u7a0b\u5931\u6557 \u00b7 ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+          "${{ secrets.DISCORD_WEBHOOK }}" || true
