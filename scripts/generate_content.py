@@ -630,6 +630,25 @@ def generate_posts(count: int = 5) -> list[tuple[str, str, str]]:
                 html_content, slug = generate_post_html(t, today)
                 posts.append((html_content, slug, t["title"]))
 
+    # Second pass: cross-link the batch's posts ("Related articles") for SEO crawl depth.
+    # On-disk filenames are "{today}-{slug}.html", so links use that form (same _posts dir).
+    if len(posts) > 1:
+        linked = []
+        for html, slug, title in posts:
+            others = [(s, t) for (_, s, t) in posts if s != slug][:3]
+            items = "".join(
+                f'<li style="margin:5px 0;"><a href="{today}-{s}.html" style="color:#3b82f6;">{t}</a></li>'
+                for s, t in others
+            )
+            block = (
+                '<div style="margin:30px 0;padding:16px;background:#1e293b;border-radius:12px;">'
+                '<h3 style="color:#93c5fd;margin-bottom:8px;font-size:1.1rem;">📚 Related articles</h3>'
+                f'<ul style="list-style:none;margin:0;padding:0;">{items}</ul></div>'
+            )
+            html = html.replace('<div class="share">', block + '\n    <div class="share">', 1)
+            linked.append((html, slug, title))
+        posts = linked
+
     return posts
 
 
