@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://slashman413.github.io/hermes-seo-farm/sitemap.xml
