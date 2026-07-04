@@ -26,10 +26,10 @@ PRODUCT_CTAS = {
         "price": "Free",
     },
     "tech": {
-        "name": "GitHub Tools Collection",
-        "url": "https://github.com/slashman413",
-        "text": "💻 Explore 20+ open-source projects on GitHub — all free, all automated with GitHub Actions →",
-        "price": "Free & Open Source",
+        "name": "SaaS Starter",
+        "url": "https://slashman413.gumroad.com/l/saas-starter",
+        "text": "🛠 Ship a multi-tenant B2B SaaS this weekend — SaaS Starter gives you auth, org multi-tenancy, RBAC, Stripe billing, and API keys, ready to deploy →",
+        "price": "$99",
     },
     "psychology": {
         "name": "Gentle Soul YouTube",
@@ -457,6 +457,14 @@ CONTENT_TEMPLATES = {
 }
 
 
+def _with_utm(url: str) -> str:
+    """Tag a CTA link so article click-throughs are measurable in GA/Gumroad."""
+    if "utm_source=" in url:
+        return url
+    sep = "&" if "?" in url else "?"
+    return f"{url}{sep}utm_source=seo-farm&utm_medium=article&utm_campaign=hermes-seo-farm"
+
+
 def insert_cta(body_lines: list[str], category: str) -> list[str]:
     """Insert relevant product CTA mid-article."""
     cta = PRODUCT_CTAS.get(category)
@@ -472,10 +480,10 @@ def insert_cta(body_lines: list[str], category: str) -> list[str]:
         result.append(line)
         # Insert CTA after the middle of the article
         if i == len(body_lines) // 2:
-            result.append(f'<div class="cta-box"><strong>{cta["text"]}</strong><br><a href="{cta["url"]}" target="_blank">{cta["name"]} — {cta["price"]}</a></div>')
+            result.append(f'<div class="cta-box"><strong>{cta["text"]}</strong><br><a href="{_with_utm(cta["url"])}" target="_blank">{cta["name"]} — {cta["price"]}</a></div>')
         # Insert second CTA near the end
         if i == len(body_lines) - 2 and second:
-            result.append(f'<div class="cta-box cta-secondary"><strong>{second["text"]}</strong><br><a href="{second["url"]}" target="_blank">{second["name"]} — {second["price"]}</a></div>')
+            result.append(f'<div class="cta-box cta-secondary"><strong>{second["text"]}</strong><br><a href="{_with_utm(second["url"])}" target="_blank">{second["name"]} — {second["price"]}</a></div>')
     return result
 
 
