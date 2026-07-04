@@ -549,6 +549,19 @@ def generate_post_html(template: dict, date_str: str) -> tuple[str, str]:
 <meta name="keywords" content="{', '.join(template['tags'])}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://slashmantools.us/hermes-seo-farm/_posts/{slug}.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{template['title']}">
+<meta property="og:description" content="{description}">
+<meta property="og:url" content="https://slashmantools.us/hermes-seo-farm/_posts/{slug}.html">
+<meta property="og:site_name" content="Knowledge Blog">
+<meta property="article:published_time" content="{date_str}">
+<meta property="article:section" content="{template['category'].title()}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{template['title']}">
+<meta name="twitter:description" content="{description}">
+<script type="application/ld+json">
+{{"@context":"https://schema.org","@type":"Article","headline":"{template['title']}","description":"{description}","datePublished":"{date_str}","dateModified":"{date_str}","author":{{"@type":"Organization","name":"Knowledge Blog"}},"publisher":{{"@type":"Organization","name":"slashman413"}},"mainEntityOfPage":"https://slashmantools.us/hermes-seo-farm/_posts/{slug}.html","articleSection":"{template['category'].title()}"}}
+</script>
 <style>
     * {{ margin:0; padding:0; box-sizing:border-box; }}
     body {{ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0f172a; color:#e2e8f0; max-width:720px; margin:auto; padding:20px; line-height:1.8; font-size:16px; }}
