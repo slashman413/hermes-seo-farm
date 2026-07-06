@@ -5,7 +5,7 @@
 ## Products
 
 - [TWSE Premium](https://ko-fi.com/s/b99720d13d?utm_source=seo-farm&utm_medium=article&utm_campaign=hermes-seo-farm): Real-time Taiwan stock buy/sell signals for 1800+ stocks. $49/mo.
-- [SaaS Starter](https://slashman413.gumroad.com/l/saas-starter?utm_source=seo-farm&utm_medium=article&utm_campaign=hermes-seo-farm): Multi-tenant B2B SaaS boilerplate with auth, RBAC, Stripe billing. $99.
+- [SaaS Starter](https://slashmaster6.gumroad.com/l/kuvajr?utm_source=seo-farm&utm_medium=article&utm_campaign=hermes-seo-farm): Multi-tenant B2B SaaS boilerplate with auth, RBAC, Stripe billing. $99.
 - [Free Online Tools](https://slashmantools.us/): 20+ browser-based tools -- calculators, PDF, QR, image compression. Free.
 - [SEO Content Engine](https://ko-fi.com/s/a03f0a8e3b?utm_source=seo-farm&utm_medium=article&utm_campaign=hermes-seo-farm): Auto-generate SEO articles daily on GitHub Pages. $19/mo.
 - [Deal Finder Pro](https://ko-fi.com/s/5730f8f947?utm_source=seo-farm&utm_medium=article&utm_campaign=hermes-seo-farm): Automated Amazon price drop alerts. $19/mo.
