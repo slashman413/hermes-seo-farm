@@ -27,7 +27,7 @@ PRODUCT_CTAS = {
     },
     "tech": {
         "name": "SaaS Starter",
-        "url": "https://slashman413.gumroad.com/l/saas-starter",
+        "url": "https://slashmaster6.gumroad.com/l/kuvajr",
         "text": "🛠 Ship a multi-tenant B2B SaaS this weekend — SaaS Starter gives you auth, org multi-tenancy, RBAC, Stripe billing, and API keys, ready to deploy →",
         "price": "$99",
     },
