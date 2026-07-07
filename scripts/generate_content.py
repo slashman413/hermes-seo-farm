@@ -47,7 +47,7 @@ PRODUCT_CTAS = {
         "name": "Deal Finder Pro",
         "url": "https://ko-fi.com/s/5730f8f947",
         "text": "🛒 Never miss an Amazon deal again! Deal Finder Pro automatically tracks and notifies you of the best discounts →",
-        "price": "$19/mo",
+        "price": "$9",  # matches the live Ko-fi listing — do not advertise a higher price
     },
 }
 
