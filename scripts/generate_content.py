@@ -547,7 +547,7 @@ def generate_post_html(template: dict, date_str: str) -> tuple[str, str]:
 <title>{template['title']}</title>
 <meta name="description" content="{description}">
 <meta name="keywords" content="{', '.join(template['tags'])}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex">
 <link rel="canonical" href="https://slashmantools.us/hermes-seo-farm/_posts/{slug}.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{template['title']}">
